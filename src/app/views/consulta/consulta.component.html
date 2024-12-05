@@ -1,0 +1,53 @@
+<p>Consulta</p>
+
+<button (click)="crear()">
+    Crear
+</button>
+
+<table mat-table [dataSource]="dataSource">
+<ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let user">{{user.nombre}}</td>
+</ng-container>
+<ng-container matColumnDef="ApellidoP">
+    <th mat-header-cell *matHeaderCellDef>Apellido Paterno</th>
+    <td mat-cell *matCellDef="let user">{{user.apellidoPaterno}}</td>
+</ng-container>
+<ng-container matColumnDef="ApellidoM">
+    <th mat-header-cell *matHeaderCellDef>Apellido Materno</th>
+    <td mat-cell *matCellDef="let user">{{user.apellidoMaterno}}</td>
+</ng-container>
+<ng-container matColumnDef="curp">
+    <th mat-header-cell *matHeaderCellDef>Curp</th>
+    <td mat-cell *matCellDef="let user">{{user.curp}}</td>
+</ng-container>
+<ng-container matColumnDef="telefono">
+    <th mat-header-cell *matHeaderCellDef>Telefono</th>
+    <td mat-cell *matCellDef="let user">{{user.telefono}}</td>
+</ng-container>
+<ng-container matColumnDef="sexo">
+    <th mat-header-cell *matHeaderCellDef>Sexo</th>
+    <td mat-cell *matCellDef="let user">{{user.sexo}}</td>
+</ng-container>
+<ng-container matColumnDef="estatus">
+    <th mat-header-cell *matHeaderCellDef>Estatus</th>
+    <td mat-cell *matCellDef="let user">{{ user.activo ? 'Activo': 'Inactivo'}}</td>
+</ng-container>
+
+<ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let user">
+        <div>
+            <button [disabled]="!user.activo" (click)="editar(user)">
+                Editar
+            </button>
+            <button [disabled]="!user.activo" (click)="eliminar(user)">
+                Eliminar
+            </button>
+        </div>
+    </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="columnDisplay"></tr>
+<tr mat-row *matRowDef="let myRowData; columns: columnDisplay"></tr>
+</table>

@@ -1,0 +1,52 @@
+<p>Registro</p>
+<form [formGroup]="formEmpleado" (ngSubmit)="registrar()">
+    <!-- Nombre -->
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" />
+    <div *ngIf="formEmpleado.get('nombre')?.invalid && formEmpleado.get('nombre')?.touched">
+      {{ getErrorMessage('nombre') }}
+    </div>
+
+    <!-- Apellido Paterno -->
+    <label for="apellidoPaterno">Apellido Paterno:</label>
+    <input id="apellidoPaterno" formControlName="apellidoPaterno" />
+    <div *ngIf="formEmpleado.get('apellidoPaterno')?.invalid && formEmpleado.get('apellidoPaterno')?.touched">
+      {{ getErrorMessage('apellidoPaterno') }}
+    </div>
+
+    <!-- Apellido Materno -->
+    <label for="apellidoMaterno">Apellido Materno:</label>
+    <input id="apellidoMaterno" formControlName="apellidoMaterno" />
+    <div *ngIf="formEmpleado.get('apellidoMaterno')?.invalid && formEmpleado.get('apellidoMaterno')?.touched">
+      {{ getErrorMessage('apellidoMaterno') }}
+    </div>
+
+    <!-- CURP -->
+    <label for="curp">CURP:</label>
+    <input id="curp" formControlName="curp" />
+    <div *ngIf="formEmpleado.get('curp')?.invalid && formEmpleado.get('curp')?.touched">
+      {{ getErrorMessage('curp') }}
+    </div>
+
+    <!-- Teléfono -->
+    <label for="telefono">Teléfono:</label>
+    <input id="telefono" formControlName="telefono" type="number"/>
+    <div *ngIf="formEmpleado.get('telefono')?.invalid && formEmpleado.get('telefono')?.touched">
+      {{ getErrorMessage('telefono') }}
+    </div>
+
+    <!-- Sexo -->
+    <label for="sexo">Sexo:</label>
+    <select id="sexo" formControlName="sexo">
+      <option value="" disabled>Seleccione...</option>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+      <option value="otro">Otro</option>
+    </select>
+    <div *ngIf="formEmpleado.get('sexo')?.invalid && formEmpleado.get('sexo')?.touched">
+      Debe seleccionar una opción.
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="formEmpleado.invalid">Enviar</button>
+  </form>
